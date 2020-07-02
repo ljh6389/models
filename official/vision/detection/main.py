@@ -42,16 +42,19 @@ from official.vision.detection.dataloader import mode_keys as ModeKeys
 from official.vision.detection.executor.detection_executor import DetectionDistributedExecutor
 from official.vision.detection.modeling import factory as model_factory
 
+import sys
+
+
 hyperparams_flags.initialize_common_flags()
 flags_core.define_log_steps()
 
 flags.DEFINE_bool('enable_xla', default=False, help='Enable XLA for GPU')
 
 flags.DEFINE_string(
-    'mode', default='train', help='Mode to run: `train` or `eval`.')
+    'mode', default='eval', help='Mode to run: `train` or `eval`.')
 
 flags.DEFINE_string(
-    'model', default='retinanet',
+    'model', default='mask_rcnn',
     help='Model to run: `retinanet`, `mask_rcnn` or `shapemask`.')
 
 flags.DEFINE_string('training_file_pattern', None,
